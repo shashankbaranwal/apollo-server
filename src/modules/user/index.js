@@ -1,1 +1,1 @@
-export { default as getProfile } from './query';
+export { default as getMyProfile } from './query';
