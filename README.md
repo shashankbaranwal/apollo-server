@@ -9,6 +9,7 @@
 
 ### What is GraphQL?
 - GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.
+- graphql is the library used to build a GraphQL schema and execute queries against it.
 - GraphQL provides a complete and understandable description of the data in your API.
 - GraphQL gives clients the power to ask for exactly what they need and nothing more. 
 - GraphQL makes it easier to evolve APIs over time, and enables powerful developer tools.
