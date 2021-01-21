@@ -4,9 +4,10 @@ type Query {
 }
 
 type Mutation {
-  create(user: CreateUserInput): User!
-  update(id: ID!, email: String, role: String): User!
-  delete(id: ID): User!
+  createTrainee(user: CreateUserInput): User!
+  updateTrainee(id: ID!, email: String, role: String): User!
+  deleteTrainee(id: ID): User!
+  loginUser(payload: loginData): String!
 }
 
 type Subscription {

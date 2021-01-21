@@ -9,19 +9,19 @@ class User {
     return details;
   }
 
-  create(data) {
+  createUser(data) {
     this.id += 1;
     this.data.set(this.id, { ...data, id: this.id });
     return this.data.get(this.id);
   }
 
-  update(id, email) {
+  updateUser(id, email) {
     const trainee = this.data.get(Number(id));
     this.data.set(Number(id), { ...trainee, email });
     return this.data.get(Number(id));
   }
 
-  delete(id) {
+  deleteUser(id) {
     const delRec = this.data.get(Number(id));
     this.data.delete(Number(id));
     return delRec;
