@@ -1,19 +1,19 @@
 /* eslint-disable no-console */
-import userClass from '../../service/user';
+import userInstance from '../../service/user';
 
 export default {
-  create: (parent, args) => {
+  createTrainee: (parent, args) => {
     const { user } = args;
-    return userClass.create(user);
+    return userInstance.createUser(user);
   },
-  update: (parent, args) => {
+  updateTrainee: (parent, args) => {
     const { id, email, role } = args;
-    return userClass.update(id, email, role);
+    return userInstance.updateUser(id, email, role);
   },
-  delete: (parent, args) => {
+  deleteTrainee: (parent, args) => {
     const { id } = args;
-    const del = userClass.delete(id);
-    console.log(del, 'retrn');
+    const del = userInstance.deleteUser(id);
+    console.log(del, 'return');
     return del;
   },
 };
