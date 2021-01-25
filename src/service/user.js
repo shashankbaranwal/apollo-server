@@ -1,18 +1,18 @@
 class User {
   constructor() {
-    this.data = new Map();
+    this.users = new Map();
     this.id = 0;
   }
 
   getAll() {
-    const details = this.data.values();
+    const details = this.users.values();
     return details;
   }
 
-  createUser(data) {
+  createUser(user) {
     this.id += 1;
-    this.data.set(this.id, { ...data, id: this.id });
-    return this.data.get(this.id);
+    this.users.set(this.id, { ...user, id: this.id });
+    return this.users.get(this.id);
   }
 
   updateUser(id, email) {
