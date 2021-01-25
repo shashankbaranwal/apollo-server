@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-import user from '../../service/user';
-
 export default {
   // getAll: () => user.getAll(),
   getAll: async (parent, args, context) => {

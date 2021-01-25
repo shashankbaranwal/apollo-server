@@ -33,5 +33,4 @@ type UpdatedUser {
     createdAt: String
     updatedBy: String
     updatedAt: String
-
 }

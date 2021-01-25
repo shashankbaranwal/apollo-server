@@ -16,7 +16,7 @@ class User {
   }
 
   updateUser(users, id) {
-    console.log('Inside update method USer');
+    console.log('Inside update method User');
     const traineeId = this.users.get(Number(id));
     this.users.set(Number(id), { ...traineeId, ...users });
     return this.users.get(Number(id));
