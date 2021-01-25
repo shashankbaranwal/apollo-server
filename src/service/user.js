@@ -9,7 +9,7 @@ class User {
     return details;
   }
 
-  createUser(data) {
+  createUser(user) {
     this.id += 1;
     this.users.set(this.id, { ...user, id: this.id });
     return this.users.get(this.id);
