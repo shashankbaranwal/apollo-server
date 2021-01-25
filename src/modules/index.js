@@ -9,7 +9,7 @@ const typeDefs = mergeTypes(types, { all: true });
 export default {
   resolvers: {
     Query: {
-      ...user.getMyProfile,
+      ...user.getMe,
       ...trainee.query,
     },
     Mutation: {

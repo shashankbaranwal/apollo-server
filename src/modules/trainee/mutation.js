@@ -1,27 +1,42 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 import userInstance from '../../service/user';
-import pubsuObject from '../pubsub';
+import instancePubSub from '../pubsub';
 import constant from '../../lib/constant';
 
 export default {
-  createTrainee: (parent, args) => {
+  createTrainee: async (parent, args, context) => {
     const { user } = args;
-    const newTrainee = userInstance.createUser(user);
-    pubsuObject.publish(constant.subscriptions.TRAINEE_ADDED, { traineeAdded: newTrainee });
-    return newTrainee;
+    const { dataSources: { traineeApi } } = context;
+    const response = await traineeApi.createTrainee(user);
+    instancePubSub.publish(constant.subscriptions.TRAINEE_ADDED, { traineeAdded: response.data.data });
+    return response.data.data;
+    // const newTrainee = userInstance.createUser(user);
+    // instancePubSub.publish(constant.subscriptions.TRAINEE_ADDED, { traineeAdded: newTrainee });
+    // return newTrainee;
   },
-  updateTrainee: (parent, args) => {
-    const { id, email, role } = args;
-    const updateTrainee = userInstance.updateUser(id, email, role);
-    pubsuObject.publish(constant.subscriptions.TRAINEE_UPDATED, { traineeUpdated: updateTrainee });
-    return updateTrainee;
+
+  updateTrainee: async (parent, args, context) => {
+    const { user } = args;
+    //    const updateTraine = userInstance.updateUser(user);
+    //    instancePubSub.publish(constant.subscriptions.TRAINEE_UPDATED, { traineeUpdated: updateTraine });
+    //     return updateTraine;
+    const { dataSources: { traineeApi } } = context;
+    const response = await traineeApi.updateTrainee(user);
+    instancePubSub.publish(constant.subscriptions.TRAINEE_UPDATED,
+      { traineeUpdated: response.data.Details });
+    return response.data.Details;
   },
-  deleteTrainee: (parent, args) => {
+
+  deleteTrainee: async (parent, args, context) => {
     const { id } = args;
-    const deleteTrainee = userInstance.deleteUser(id);
-    pubsuObject.publish(
-      constant.subscriptions.TRAINEE_DELETED,
-      { traineeDeleted: deleteTrainee.id },
-    );
-    return deleteTrainee;
+    // const deleteTraine = userInstance.delete(id);
+    // instancePubSub.publish(constant.subscriptions.TRAINEE_DELETED, { traineeDeleted: deleteTraine.id });
+    // return deleteTraine;
+    const { dataSources: { traineeApi } } = context;
+    const response = await traineeApi.deleteTrainee(id);
+    instancePubSub.publish(constant.subscriptions.TRAINEE_DELETED,
+      { traineeDeleted: response.data.id });
+    return response.data.id;
   },
 };
