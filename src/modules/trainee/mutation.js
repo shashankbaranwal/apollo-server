@@ -3,18 +3,24 @@ import constant from '../../lib/constant';
 
 export default {
   createTrainee: async (parent, args, context) => {
-    const { user } = args;
+    const {
+      user: {
+        name, email, role, password,
+      },
+    } = args;
     const { dataSources: { traineeApi } } = context;
-    const response = await traineeApi.createTrainee(user);
+    const response = await traineeApi.createTrainee({
+      name, email, role, password,
+    });
     instancePubSub.publish(constant.subscriptions.TRAINEE_ADDED,
       { traineeAdded: response.data.data });
     return response.data.data;
   },
 
   updateTrainee: async (parent, args, context) => {
-    const { user } = args;
+    const { user: { id, name, email } } = args;
     const { dataSources: { traineeApi } } = context;
-    const response = await traineeApi.updateTrainee(user);
+    const response = await traineeApi.updateTrainee({ id, name, email });
     instancePubSub.publish(constant.subscriptions.TRAINEE_UPDATED,
       { traineeUpdated: response.data.Details });
     return response.data.Details;
