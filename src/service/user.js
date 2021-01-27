@@ -15,16 +15,15 @@ class User {
     return this.users.get(this.id);
   }
 
-  updateUser(id, email) {
+  updateUser(id, role, name) {
     const user = this.users.get(Number(id));
-    this.users.set(Number(id), { ...user, email });
+    this.users.set(Number(id), { ...user, role, name });
     return this.users.get(Number(id));
   }
 
   deleteUser(id) {
-    const delRec = this.users.get(Number(id));
     this.users.delete(Number(id));
-    return delRec;
+    return id;
   }
 }
 const user = new User();

@@ -10,8 +10,8 @@ export default {
     return newTrainee;
   },
   updateTrainee: (parent, args) => {
-    const { id, email, role } = args;
-    const updateTrainee = userInstance.updateUser(id, email, role);
+    const { id, role, name } = args;
+    const updateTrainee = userInstance.updateUser(id, role, name);
     pubsuObject.publish(constant.subscriptions.TRAINEE_UPDATED, { traineeUpdated: updateTrainee });
     return updateTrainee;
   },
