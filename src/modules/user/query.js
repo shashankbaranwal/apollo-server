@@ -1,5 +1,8 @@
-import user from '../../service/user';
-
 export default {
-  getMyProfile: () => user.getAll(),
+  getMyProfile: async (parent, args, context) => {
+    const { dataSources: { userApi } } = context;
+    const response = await userApi.getMe();
+    const { data: [{ user }] } = response;
+    return user;
+  },
 };

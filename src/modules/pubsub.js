@@ -1,4 +1,4 @@
 import { PubSub } from 'apollo-server-express';
 
-const pubSubObject = new PubSub();
-export default pubSubObject;
+const instancePubSub = new PubSub();
+export default instancePubSub;

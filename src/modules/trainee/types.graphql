@@ -1,5 +1,22 @@
 input CreateUserInput {
+    name: String!
+    email: String!
+    role: String!
+    password: String!
+    createdBy: String!
+}
+
+type getAllType {
+  _id: String!
   name: String!
   email: String!
   role: String!
+  originalId: String!
+  createdAt: String!
+}
+
+input UpdateUserInput {
+  id: ID!
+  name: String
+  role: String
 }

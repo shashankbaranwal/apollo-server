@@ -15,15 +15,17 @@ class User {
     return this.users.get(this.id);
   }
 
-  updateUser(id, role, name) {
-    const user = this.users.get(Number(id));
-    this.users.set(Number(id), { ...user, role, name });
+  updateUser(users, id) {
+    console.log('Inside update method User');
+    const traineeId = this.users.get(Number(id));
+    this.users.set(Number(id), { ...traineeId, ...users });
     return this.users.get(Number(id));
   }
 
   deleteUser(id) {
-    this.users.delete(Number(id));
-    return id;
+    const delRec = this.data.get(Number(id));
+    this.data.delete(Number(id));
+    return delRec;
   }
 }
 const user = new User();
